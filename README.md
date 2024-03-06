@@ -33,3 +33,6 @@ npm run build
 ```sh
 npm run lint
 ```
+### Image in Production
+![784shots_so](https://github.com/DiogoFabricioAG/Cooking-Chronicles-Frontend/assets/126220077/25a33ca2-3839-45e7-9398-e86f52dbef1d)
+
