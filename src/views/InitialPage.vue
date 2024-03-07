@@ -7,7 +7,7 @@
             </div>
             <div class="sm:w-1/2 flex flex-col items-center text-center justify-center">
                 <h1 class="font-esteban text-3xl">Cooking Chronicles</h1>
-                <h2 class="font-bold font-merriweather text-3xl mt-2 sm:text-5xl text-pretty">
+                <h2 class="font-bold font-merriweather text-3xl mt-2 sm:text-5xl px-2 text-pretty">
                     Encuentra tus recetas favoritas en un solo lugar
                 </h2>
                 <ul class="flex space-x-1 mt-2">
@@ -28,17 +28,26 @@
                         <IconMail href="mailto:diogofabricio17@gmail.com" />
                     </li>
                 </ul>
-                <div class="w-3/4 mt-3 flex flex-col space-y-2 items-center">
+                <div class="w-3/4 mt-3 flex flex-col  items-center">
                     <router-link
                         :to="{ name: 'recipes' }"
                         class="p-2 block w-full bg-black text-white font-esteban text-sm hover:bg-white hover:text-black border border-black duration-300"
                         >Recetas</router-link
                     >
-                    <button
-                        class="p-2 w-full bg-gray-700 text-white font-esteban text-sm hover:bg-white hover:text-gray-700 border border-gray-700 duration-300"
-                    >
-                        Creditos
-                    </button>
+                    <div class="flex justify-between w-full py-3">
+                        <router-link :to="{name:'login'}" class="bg-blue-500 w-2/4 sm:hidden p-2 text-white font-esteban text-sm hover:bg-white hover:text-blue-500 border border-blue-500 duration-300">
+                            Iniciar Sesion
+                        </router-link>
+                        <button
+                            class="p-2 bg-pink-500 w-2/4  sm:w-full text-white font-esteban text-sm hover:bg-white hover:text-pink-500 border border-pink-500 duration-300"
+                        >
+                            Creditos
+                        </button>
+                        <router-link :to="{name:'signup'}" class="bg-yellow-500 w-2/4 flex items-center justify-center sm:hidden p-2 text-white font-esteban text-sm hover:bg-white hover:text-yellow-500 border border-yellow-500 duration-300">
+                            Registrarse
+                        </router-link>
+                    </div>
+                    
                 </div>
             </div>
         </div>
