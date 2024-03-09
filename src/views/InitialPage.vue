@@ -28,26 +28,38 @@
                         <IconMail href="mailto:diogofabricio17@gmail.com" />
                     </li>
                 </ul>
-                <div class="w-3/4 mt-3 flex flex-col  items-center">
+                <div class="w-3/4 mt-3 flex flex-col items-center">
                     <router-link
                         :to="{ name: 'recipes' }"
                         class="p-2 block w-full bg-black text-white font-esteban text-sm hover:bg-white hover:text-black border border-black duration-300"
                         >Recetas</router-link
                     >
+                    <router-link
+                        :to="{ name: 'credits' }"
+                        class="p-2 mt-1 w-full bg-pink-500 hidden sm:block text-white font-esteban text-sm hover:bg-white hover:text-pink-500 border border-pink-500 duration-300"
+                        >Creditos</router-link
+                    >
                     <div class="flex justify-between w-full py-3">
-                        <router-link :to="{name:'login'}" class="bg-blue-500 w-2/4 sm:hidden p-2 text-white font-esteban text-sm hover:bg-white hover:text-blue-500 border border-blue-500 duration-300">
-                            Iniciar Sesion
-                        </router-link>
-                        <button
-                            class="p-2 bg-pink-500 w-2/4  sm:w-full text-white font-esteban text-sm hover:bg-white hover:text-pink-500 border border-pink-500 duration-300"
-                        >
-                            Creditos
-                        </button>
-                        <router-link :to="{name:'signup'}" class="bg-yellow-500 w-2/4 flex items-center justify-center sm:hidden p-2 text-white font-esteban text-sm hover:bg-white hover:text-yellow-500 border border-yellow-500 duration-300">
-                            Registrarse
-                        </router-link>
+                        <ButtonComponent
+                            :name="!userStore.user.isAuthenticated ? 'login' : 'profile'"
+                            class="bg-blue-500 border-blue-500 hover:text-blue-500 sm:hidden"
+                            :text="!userStore.user.isAuthenticated ? 'Iniciar Sesion' : 'Mi Perfil'"
+                        />
+                        <ButtonComponent
+                            name="credits"
+                            class="bg-pink-500 border-pink-500 hover:text-pink-500 sm:hidden"
+                            text="Creditos"
+                        />
+                        <ButtonComponent
+                            name="signup"
+                            class="bg-yellow-500 border-yellow-500 hover:text-yellow-500 sm:hidden"
+                            :text="
+                                !userStore.user.isAuthenticated
+                                    ? 'Registrarse'
+                                    : 'Recetas Favoritas'
+                            "
+                        />
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -55,15 +67,25 @@
 </template>
 <script>
 import NavComponen from '@/components/NavComponent.vue'
+import ButtonComponent from '@/components/ButtonComponent.vue'
 import IconFacebook from '@/components/icons/IconFacebook.vue'
 import IconX from '@/components/icons/IconX.vue'
 import IconInstagram from '@/components/icons/IconInstagram.vue'
 import IconMail from '@/components/icons/IconMail.vue'
 import IconGithub from '@/components/icons/IconGithub.vue'
+import { useUserStore } from '@/stores/user'
+
 export default {
     name: 'Initial',
+    setup() {
+        const userStore = useUserStore()
+        return {
+            userStore
+        }
+    },
     components: {
         NavComponen,
+        ButtonComponent,
         IconFacebook,
         IconX,
         IconInstagram,

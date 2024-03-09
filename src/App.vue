@@ -1,7 +1,3 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
     <div
         class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"
@@ -12,3 +8,18 @@ import { RouterLink, RouterView } from 'vue-router'
     </div>
     <RouterView />
 </template>
+<script>
+import { useUserStore } from '@/stores/user'
+export default {
+    name: 'app',
+    setup() {
+        const userStore = useUserStore()
+        return {
+            userStore
+        }
+    },
+    mounted() {
+        this.userStore.initStore()
+    }
+}
+</script>
