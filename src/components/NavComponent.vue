@@ -6,7 +6,7 @@
             <div class="font-esteban text-2xl">
                 <router-link :to="{ name: 'initial' }" class="flex flex-col items-center">
                     <IconChef />
-                    <span>Cooking Chronicles</span>
+                    <span class="select-none">Cooking Chronicles</span>
                 </router-link>
             </div>
             <div class="flex">

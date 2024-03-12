@@ -7,23 +7,38 @@
         </div>
 
         <div class="flex flex-col md:flex-row flex-wrap space-y-2 m-2 justify-between p-2">
-            <RecipeComponent title="Estofado de Pollo" />
-            <RecipeComponent title="Guiso de Pollo" />
-            <RecipeComponent title="Saltado de Gallina" />
-            <RecipeComponent title="Pescado Marinaro" />
-            <RecipeComponent title="Pizza Mozzarella" />
-            <RecipeComponent title="Salchipapa de Chorizo" />
+            <RecipeComponent v-for="(recipe, index) in recipes" :key="index" :title="recipe.name" :image="recipe.image" :description="recipe.description" :user_impressions="recipe.user_impressions"/>
         </div>
     </section>
 </template>
 <script>
 import NavComponen from '@/components/NavComponent.vue'
 import RecipeComponent from '@/components/RecipeComponent.vue'
+import axios from "axios"
 export default {
     name: 'recipes',
     components: {
         NavComponen,
         RecipeComponent
-    }
+    },
+    data() {
+        return {
+            recipes: [],      
+        }
+    },
+    mounted() {
+        this.getRecipes()
+    },
+    methods: {
+        async getRecipes(){
+            await axios.get("api/recipes")
+            .then(response => {
+                this.recipes = response.data
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        }
+    },
 }
 </script>

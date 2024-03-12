@@ -24,9 +24,24 @@ const router = createRouter({
             component: () => import('@/views/RecipesPage.vue')
         },
         {
+            path: '/recipe',
+            name: 'recipe',
+            component: () => import('@/views/RecipePage.vue')
+        },
+        {
+            path: '/recipe/create',
+            name: 'crecipe',
+            component: () => import('@/views/RecipeCreatePage.vue')
+        },
+        {
             path: '/profile',
             name: 'profile',
             component: () => import('@/views/ProfilePage.vue')
+        },
+        {
+            path: '/profile/edit',
+            name: 'editprofile',
+            component: () => import('@/views/EditProfilePage.vue')
         },
         {
             path: '/credits',

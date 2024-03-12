@@ -1,13 +1,13 @@
 <template>
     <div class="w-1/3 space-y-2">
-        <img src="../images/Chef.jpg" alt="ProfileImage" class="rounded-full w-1/2 mx-auto" />
+        <img :src="image" alt="ProfileImage" class="rounded-full w-1/2 mx-auto" />
         <div class="flex justify-between w-full">
-            <h2 class="text-center text-2xl font-merriweather font-bold">Cory Mailwait</h2>
+            <h2 class="text-center text-2xl font-merriweather font-bold">{{ username }}</h2>
             <span class="flex space-x-2">
                 <ButtonComponent
                     class="bg-gray-500 w-auto border-gray-500 hover:text-gray-500"
                     text="Editar"
-                    name="credits"
+                    name="editprofile"
                 />
                 <button
                     @click="outsesion"
@@ -18,33 +18,22 @@
             </span>
         </div>
         <div class="flex space-x-2 justify-center">
-            <IconFacebook href="https://www.facebook.com" />
-            <IconInstagram href="https://www.instagram.com" />
-            <IconTiktok href="https://www.tiktok.com/es/" />
+            <IconFacebook :href="face"/>
+            <IconInstagram :href="insta"/>
+            <IconTiktok  :href="tiktok"/>
         </div>
         <section class="text-sm font-esteban space-y-1 text-center text-gray-500">
             <p>
-                ¡Hola! Soy Santiago, el nuevo chef en la ciudad y estoy aquí para traer un sabor
-                fresco a tu mesa. Mi cocina es una fusión de tradición y modernidad, donde cada
-                ingrediente cuenta su propia historia.
+                {{ description }}
             </p>
             <p>
-                Me gradué recientemente de “La Mesa del Chef”, y aunque soy nuevo en la escena, mi
-                pasión por la cocina me ha llevado a crear platos que hablan por sí mismos.
-            </p>
-            <p>Innovación: Creo que la cocina es un lienzo en blanco para la creatividad.</p>
-            <p>
-                Sabor: Busco la perfección en cada sabor, equilibrando lo clásico con lo inesperado.
+                Aprendizaje: {{ education }}
             </p>
             <p>
-                Aprendizaje: Cada día es una oportunidad para aprender algo nuevo y mejorar mis
-                habilidades.
-            </p>
-            <p>
-                Mi Especialidad: “Mar y Tierra Tropical”: Un plato que captura la esencia del océano
-                y la riqueza de la tierra, con un toque tropical que te sorprenderá.
+                Mi Especialidad: {{ speciality }}
             </p>
         </section>
+        <router-link :to="{name:'crecipe'}" class="block text-center bg-blue-500 text-white m-3 p-1 hover:bg-white hover:text-blue-500 border border-blue-500 duration-150">Crear Receta</router-link>
     </div>
 </template>
 <script>
@@ -55,6 +44,7 @@ import ButtonComponent from '@/components/ButtonComponent.vue'
 import { useUserStore } from '@/stores/user'
 
 export default {
+    props: ["image","username","description","education","speciality","face","insta","tiktok"],
     setup() {
         const userStore = useUserStore()
         return {
