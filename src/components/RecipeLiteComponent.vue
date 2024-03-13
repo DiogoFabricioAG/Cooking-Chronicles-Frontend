@@ -10,7 +10,7 @@
                 </div>
                 <div>
                     <router-link
-                        :to="{name:'recipe'}"
+                        :to="{ name: 'recipe' , params:{id:idrecipe}}"
                         class="p-1 flex items-center space-x-1 text-sm font-esteban bg-green-300 text-white duration-150 hover:scale-105"
                     >
                         <span>Detalles</span>
@@ -25,11 +25,10 @@
 import IconArrow from '@/components/icons/IconArrow.vue'
 import IngredientsTags from '@/components/IngredientsTags.vue'
 export default {
-    props: ['title',"image"],
+    props: ['title', 'image',"idrecipe"],
     components: {
         IconArrow,
         IngredientsTags
-    },
-    
+    }
 }
 </script>

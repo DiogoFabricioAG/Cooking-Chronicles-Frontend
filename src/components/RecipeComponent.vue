@@ -21,7 +21,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <div class="flex justify-between items-center mt-2">
                 <div class="flex space-x-2 items-center">
                     <img src="../images/Chef.jpg" alt="chef" class="size-12 rounded-full" />
@@ -32,12 +32,12 @@
                 </div>
                 <div>
                     <router-link
-                        :to="{name:'recipe'}"
+                        :to="{ name: 'recipe' , params:{id:idrecipe}}"
                         class="p-1 flex items-center space-x-1 text-sm font-esteban bg-green-300 text-white duration-150 hover:scale-105"
                     >
                         <span>Detalles</span>
                         <IconArrow />
-                </router-link>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
 import IconArrow from '@/components/icons/IconArrow.vue'
 import IngredientsTags from '@/components/IngredientsTags.vue'
 export default {
-    props: ['title',"image","description","user_impressions"],
+    props: ['title', 'image', 'description', 'user_impressions',"idrecipe"],
     components: {
         IconArrow,
         IngredientsTags

@@ -18,22 +18,22 @@
             </span>
         </div>
         <div class="flex space-x-2 justify-center">
-            <IconFacebook :href="face"/>
-            <IconInstagram :href="insta"/>
-            <IconTiktok  :href="tiktok"/>
+            <IconFacebook :href="face" />
+            <IconInstagram :href="insta" />
+            <IconTiktok :href="tiktok" />
         </div>
         <section class="text-sm font-esteban space-y-1 text-center text-gray-500">
             <p>
                 {{ description }}
             </p>
-            <p>
-                Aprendizaje: {{ education }}
-            </p>
-            <p>
-                Mi Especialidad: {{ speciality }}
-            </p>
+            <p>Aprendizaje: {{ education }}</p>
+            <p>Mi Especialidad: {{ speciality }}</p>
         </section>
-        <router-link :to="{name:'crecipe'}" class="block text-center bg-blue-500 text-white m-3 p-1 hover:bg-white hover:text-blue-500 border border-blue-500 duration-150">Crear Receta</router-link>
+        <router-link
+            :to="{ name: 'crecipe' }"
+            class="block text-center bg-blue-500 text-white m-3 p-1 hover:bg-white hover:text-blue-500 border border-blue-500 duration-150"
+            >Crear Receta</router-link
+        >
     </div>
 </template>
 <script>
@@ -44,7 +44,16 @@ import ButtonComponent from '@/components/ButtonComponent.vue'
 import { useUserStore } from '@/stores/user'
 
 export default {
-    props: ["image","username","description","education","speciality","face","insta","tiktok"],
+    props: [
+        'image',
+        'username',
+        'description',
+        'education',
+        'speciality',
+        'face',
+        'insta',
+        'tiktok'
+    ],
     setup() {
         const userStore = useUserStore()
         return {
